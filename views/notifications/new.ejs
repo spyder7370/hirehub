@@ -1,0 +1,79 @@
+<%- include('../partials/notificationHeader'); -%>
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-lg-6">
+            <img src="/images/add_notif.svg"
+                id="login-img" alt="">
+        </div>
+        <div class="col-lg-6">
+            <main class="form-signin mt-5">
+                <form action="/notifications" method="POST">
+                    <h1 class="h3 fs-3 mb-3 lead text-center">Post a new notification</h1>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control mid-input" id="jobTitle" name="description" placeholder="description" required>
+                        <label for="jobTitle">Notification Body</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control mid-input" id="notifAuthor" name="author" placeholder="author" required>
+                        <label for="notifAuthor">Author</label>
+                    </div>
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Post Notification</button>
+                </form>
+            </main>
+            <div class="form-signin">
+                <a href="/notifications">Go back</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<%- include('../partials/footer'); -%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <%- include('../partials/notificationHeader'); -%>
+<div class = "container">
+	<div class="row justify-content-center">
+		JUMBOTRON
+		<header class="h-100 p-5 bg-light border rounded-3">
+		<h1 style="text-align: center;">Create a new Notification</h1>
+		</header>
+		
+		FORM
+		<div style="width: 30%; margin: 25px auto;">
+			<form action="/notifications" method="POST">
+				
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="description" placeholder="description">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="author" placeholder="author">
+				</div>
+				<div class="form-group">
+					<div class="d-grid gap-2">
+					  <button class="btn btn-primary" type="submit">Submit</button>
+					</div>
+				</div>
+			</form>
+			<a href ="/notifications">Go back</a>
+		</div>
+	</div>
+</div>
+<%- include('../partials/footer'); -%>
+
+
+ -->

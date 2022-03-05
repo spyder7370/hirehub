@@ -1,0 +1,41 @@
+{
+  "name": "hirehub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i-see-pixels/hirehub-backend.git"
+  },
+  "author": "Himanshu Siddhant Hitesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i-see-pixels/hirehub-backend/issues"
+  },
+  "homepage": "https://github.com/i-see-pixels/hirehub-backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "crypt": "^0.0.2",
+    "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.2",
+    "jquery": "^3.6.0",
+    "jsdom": "^19.0.0",
+    "locus": "^2.0.4",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.1",
+    "mongoose": "^6.0.13",
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0"
+  }
+}

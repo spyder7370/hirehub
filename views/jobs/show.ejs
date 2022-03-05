@@ -1,0 +1,311 @@
+<%- include('../partials/jobHeader'); -%>
+<div class="show-page">
+	<div style="padding-top: 100px; padding-bottom: 150px; background-image: url(/images/job_show.svg); background-repeat: no-repeat; background-position: 50% 25%;" class="online-cv section-overly pt-90 pb-120">
+	    <div class="container">
+	        <div class="row justify-content-center">
+	            <div class="col-xl-10">
+	                <div class="cv-caption text-center">
+	                    <p class="pera2 mt-5">
+	                        <%= job.name %>
+	                    </p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	
+	<div class="container mt-5">
+
+		<% if(currentUser && !currentUser.selected){ %>
+			<% job.students.forEach(function(student){ %>
+				<% if(student.name == currentUser.name){ %>
+					<% if(student.shortlisted){ %>
+						<div class="alert alert-info mb-3" role="alert">
+						  Congratulations!! you have been shortlisted for this job, please wait for our further notice.
+						</div>
+						<h1></h1>
+					<% } else if (student.rejected){ %>
+						<div class="alert alert-warning mb-3" role="alert">
+						  Sorry, you have been rejected for this job, you can apply for some other active job.
+						</div>
+					<% } %>
+				<% } %>
+			<% }) %>
+		<% } %>
+		<% if(currentUser && currentUser.selected){ %>
+			<div class="alert alert-danger mb-3" role="alert">
+			  You have been selected for a job and your job letter has been sent, you cannot apply for other jobs now.
+			</div>
+		<% } %>
+
+	    <div class="card mb-3">
+	        <div class="row g-0">
+	            <div class="col-lg-1 d-flex align-items-center">
+	                <img style="width: 100%; height: auto;" src="<%= job.logo %>" class="img-fluid rounded-start my-auto p-3" alt="...">
+	            </div>
+	            <div class="col-lg-8">
+	                <div class="card-body">
+	                    <h4 class="card-title">
+	                        <%= job.name %>
+	                    </h4>
+	                    <p class="card-text"><small class="text-muted">
+	                            <i class="me-1 fas fa-map-marker-alt"></i> <%= job.location %>
+	                            <i class="ms-3 me-1 far fa-clock"></i> <%= job.time %>
+	                            <i class="ms-3 me-1 far fa-money-bill-alt"></i> <%= job.stipend %>
+	                            <i class="ms-3 me-1 fas fa-hourglass-half"></i> <%= job.deadline.toDateString() %>
+	                            <strong><i class="ms-3 me-1 fas fa-calendar-day"></i> Status: <%= job.status %></strong>
+	                    </small></p>
+	                    <p><a href="/jobs/<%=job._id%>/apply/<%=currentUser._id%>" class="btn btn-success 
+	                    	<% if((job.status!=='Active') || (currentUser && currentUser.selected)){ %>
+	                    		disabled
+	                    	<% } %>
+	                    "><i class="me-2 fas fa-briefcase"></i> Apply</a>
+
+	                    <% if(currentUser && !currentUser.selected){ %>
+							<% job.students.forEach(function(student){ %>
+								<% if(student.name == currentUser.name){ %>
+									<a href="/job/<%=job._id%>/test/<%=currentUser._id%>" class="btn btn-info ms-2"><i class="me-2 far fa-file-alt"></i> Give Test</a>
+								<% } %>
+							<% }) %>
+						<% } %>
+						<% if(currentUser && currentUser.admin){ %>
+							<a href="/job/<%=job._id%>/test/<%=currentUser._id%>" class="ms-2 btn btn-info"><i class="me-2 far fa-file-alt"></i> Give Test (ADMIN)</a>
+						<% } %>
+						<a href="/jobs" class="ms-2 me-2 btn btn-outline-primary"><i class="me-2 fas fa-arrow-left"></i> Go Back</a>
+						</p>
+	                </div>
+	            </div>
+	            <div class="col-lg-3 d-flex align-items-center justify-content-center">
+	                <% if(currentUser && currentUser.admin){ %>
+						<a href="/jobs/<%=job._id%>/edit" class="btn btn-outline-warning me-2">Edit</a>
+						<form action="/jobs/<%=job._id%>?_method=DELETE" method="POST">
+							<button class="btn btn-outline-danger me-2">Delete</button>
+						</form>
+						<a class="btn btn-outline-dark" href="/job/<%=job._id%>/questions">Test Panel (ADMIN)</a>
+					<% } %>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="row">
+	    	<div class="col-lg-8">
+	    		<div class="card mb-5">
+	    			<div class="card-body">
+	    				<h5 class="card-title">
+	    					Description
+	    				</h5>
+	    				<div class="card-text">
+	    					<%=job.description%>
+	    				</div>
+	    				<h5 class="mt-3 card-title">
+	    					Key Responsibilities
+	    				</h5>
+	    				<div class="card-text">
+	    					<%=job.responsibilities%>
+	    				</div>
+	    				<h5 class="mt-3 card-title">
+	    					Minimum Requirements
+	    				</h5>
+	    				<div class="card-text">
+	    					<%=job.requirements%>
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    	<div class="col-lg-4">
+	    		<div class="card">
+	    			<div class="card-body">
+	    				<h5 class="card-title">
+	    					Short Info
+	    				</h5>
+	    				<div class="card-text">
+	    					<p><i class="mt-2 me-2 fas fa-bolt"></i> Posted: <%= moment(job.createdAt).fromNow() %></p>
+	    					<p><i class="me-2 fas fa-chart-area"></i> Industry: IT</p>
+	    					<p><i class="me-2 fas fa-chart-line"></i> Experience: <%= job.experience %></p>
+	    					<p><i class="me-2 fas fa-key"></i> Job Function: <%= job.category %></p>
+	    					<!-- <a href="#" class="btn btn-outline-success">Status: Active</a> -->
+	    					<!-- <a href="#" class="btn btn-outline-warning">Status: Interview Phase</a> -->
+	    					<% if(currentUser && currentUser.admin){ %>
+		    					<p><a href="/jobs/<%=job._id%>/active" class="me-2 btn btn-outline-success">Status: Active</a>
+		    					<a href="/jobs/<%=job._id%>/inter" class="btn btn-outline-warning">Status: Interview Phase</a></p>
+		    					<p><a href="/jobs/<%=job._id%>/over" class="btn btn-outline-danger">Status: Over</a></p>
+	    					<% } %>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="card mt-3 mb-5">
+	    			<div class="card-body">
+	    				<h5 class="card-title">
+	    					Company Info
+	    				</h5>
+	    				<div class="card-text">
+	    					<p class="mt-3">
+	    					    Compnay Name: <%= job.name %>
+	    					</p>
+	    					<p>
+							    Address: <%= job.location %>
+	    					</p>
+	    					<p>
+							    Compnay Size: <%= job.companySize %>
+	    					</p>
+	    					<p>
+							    Industry: IT
+	    					</p>
+	    					<p>
+							    Phone: <%= job.companyPhone %>
+	    					</p>
+	    					<p>
+							    Email: <a class="profile-link text-decoration-none" href="<%= job.companyEmail %>"><%= job.companyEmail %></a>
+	    					</p>
+	    					<p>
+							    Website: <a class="profile-link text-decoration-none" href="<%= job.companyWebsite %>"><%= job.companyWebsite %></a>
+	    					</p>
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+
+		<% if(currentUser && currentUser.admin){ %>
+		    <div class="row">
+		    	<div class="col-lg-12">
+		    		<div class="card mb-5">
+		    			<div class="card-body">
+			    			<h5 class="card-title">List of Applied Students</h5>
+			    			<hr>
+			    			<div class="card-text">
+			    				<% if(job.students.length == 0){ %>
+			    					<p><em>No students have applied to this job yet.</em></p>
+			    				<% } else { %>
+				    				<% job.students.forEach(function(student){ %>
+										<p>
+											<a class="text-decoration-none" href="/users/<%=student._id%>"><strong><%=student.name%></strong></a> | 
+											<% if(student.shortlisted) { %>
+												<span>shortlisted</span> 
+											<% } else if(student.rejected){ %>
+												<span>rejected</span> 
+											<% } %> 
+										</p>
+									<% }) %>
+								<% } %>
+			    			</div>	
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+	    <% } %>
+	</div>
+</div>
+
+
+<!-- footer -->
+<section style="padding-top: 90px; padding-bottom: 120px;" class="text-decoration-none home-text clearfix bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget">
+                    <h3 class="text-uppercase">About Us</h3>
+                    <p class="footer-text fs-6 lead mt-3">
+                        HireHub is a leading job portal platform that brings a lot of benefits to both job providers and job finders!
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget">
+                    <h3 class="text-uppercase">Contact Info</h3>
+                    <p class="footer-text fs-6 lead mt-3">Address :HireHub Main Office, New Delhi, India</p>
+                    <p class="footer-text fs-6 lead mt-3">Phone : +91 9999888877</p>
+                    <p class="footer-text fs-6 lead mt-3">Email : info@hirehub.com</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget social-widget">
+                    <h3 class="text-uppercase mb-3">Important Links</h3>
+                    <ul style="list-style-type: none; padding: 0; margin: 0;">
+                        <li><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-facebook-square"></i> Facebook</a></li>
+                        <li class="mt-2"><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li class="mt-2"><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li class="mt-2"><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-youtube"></i> youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget news-letter">
+                    <h3 class="text-uppercase">Job Portal</h3>
+                    <p class="footer-text fs-6 lead mt-3">View job listings from world's leading recruitment companies</p>
+                    <form action="/jobs" method="GET">
+                        <input type="text" class="footer-text form-control mb-3" placeholder="Job/Company Name">
+                        <button type="submit" class="btn btn-danger">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('../partials/footer'); -%>
+<!-- <%- include('../partials/jobHeader'); -%>
+
+<h1>
+	HIRE HUB SHOW PAGE FOR JOB 
+	<%=job.name%>
+</h1>
+<h4>
+	Must be atleast cgpa: <%=job.eligibility%>
+</h4>
+<p>
+	<%=job.description%>
+</p>
+<% if(currentUser && currentUser.admin){ %>
+	<a href="/jobs/<%=job._id%>/edit" class="btn btn-primary">edit</a>
+	<form action="/jobs/<%=job._id%>?_method=DELETE" method="POST">
+		<button class="btn btn-primary">delete</button>
+	</form>
+<% } %>
+<a href="/jobs/<%=job._id%>/apply/<%=currentUser._id%>" class="btn btn-primary">Apply</a>
+<% if(currentUser && !currentUser.selected){ %>
+	<% job.students.forEach(function(student){ %>
+		<% if(student.name == currentUser.name){ %>
+			<a href="/job/<%=job._id%>/test/<%=currentUser._id%>" class="btn btn-primary">go to test page</a>
+		<% } %>
+	<% }) %>
+<% } %>
+<% if(currentUser && currentUser.admin){ %>
+	<a href="/job/<%=job._id%>/test/<%=currentUser._id%>" class="btn btn-primary">go to test page</a>
+<% } %>
+<% if(currentUser && !currentUser.selected){ %>
+	<% job.students.forEach(function(student){ %>
+		<% if(student.name == currentUser.name){ %>
+			<% if(student.shortlisted){ %>
+				<h1>congratulations, you have been shortlisted for this job, please wait for our further notice</h1>
+			<% } else if (student.rejected){ %>
+				<h1>Sorry, you have been rejected for this job, you can apply for some other active job</h1>
+			<% } %>
+		<% } %>
+	<% }) %>
+<% } %>
+<% if(currentUser && currentUser.selected){ %>
+	<h1>congratulations, you have been selected, please wait for the further notice</h1>
+<% } %>
+<a href="/jobs">go back</a>
+
+
+<% if(currentUser && currentUser.admin){ %>
+	<p>
+		<a class="btn btn-primary" href="/job/<%=job._id%>/questions">go to admin test panel</a>
+	</p>
+	<h1>
+		list of students
+	</h1>
+	<% job.students.forEach(function(student){ %>
+	<p>
+		<a href="/users/<%=student._id%>"><strong><%=student.name%></strong></a> | 
+		<% if(student.shortlisted) { %>
+			<span>shortlisted</span> 
+		<% } else if(student.rejected){ %>
+			<span>rejected</span> 
+		<% } %> 
+	</p>
+	<% }) %>
+<% } %>
+<%- include('../partials/footer'); -%>
+ -->

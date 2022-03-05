@@ -1,0 +1,191 @@
+<%- include('../partials/userHeader'); -%>
+<div class="show-page">
+    <div style="padding-top: 100px; padding-bottom: 150px; background-image: url(/images/my-profile.svg); background-repeat: no-repeat; background-position: 50% 25%;" class="online-cv section-overly pt-90 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-10">
+                    <div class="cv-caption text-center">
+                        <p class="pera2 mt-5">
+                            My Profile
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-lg-1 d-flex align-items-center">
+                    <img style="background-position: center;" src="<%= user.avatar %>" class="img-fluid rounded-circle my-auto p-2" alt="...">
+                </div>
+                <div class="col-lg-8">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Hello,
+                            <span id="color-red"><%= user.name %></span>
+                            <% if(currentUser && currentUser.admin){ %>
+                            	<span class="lead"> (ADMIN) </span>
+                            <% } %>
+                        </h4>
+                        <p class="card-text"><small class="text-muted">
+                                <% if(currentUser._id.equals(user._id)){ %>
+                                    <i style="color: #5FBA7C;" class="fas fa-dot-circle"></i> Onine
+                                <% } else { %>
+                                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="<%= currentUser.last_login_date %>">
+                                        <i class="fas fa-dot-circle"></i> Last logged in <%= moment(currentUser.last_login_date).fromNow() %>
+                                    </span>
+                                <% } %>
+                            </small></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 d-flex align-items-center justify-content-center">
+                    <% if(currentUser && user._id.equals(currentUser._id) || currentUser && currentUser.admin){ %>
+                    	<a href="/users/<%=user._id%>/edit" class="btn btn-outline-warning">Edit</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+        	<div class="col-lg-6 mb-5">
+        		<div class="card">
+		        	<div class="card-body">
+						<h4 class="card-title"><i id="color-red" class="me-2 fas fa-user-secret"></i> Personal Details</h4>
+						<div class="p-3 card-text">
+							<p class="ms-4">
+								<strong>Full Name: </strong><%=user.name%>
+							</p>
+							<p class="ms-4">
+								<strong>Official Email ID: </strong><%=user.username%>
+							</p>
+							<p class="ms-4">
+								<strong>Branch: </strong><%=user.branch%>
+							</p>
+							<p class="ms-4">
+								<strong>CGPA: </strong><%=user.cgpa%>
+							</p>
+							<p class="ms-4">
+								<strong>Personal Email ID: </strong><%=user.personal_email%>
+							</p>
+							<p class="ms-4">
+								<strong>Mobile Number: </strong><%=user.mobile_number%>
+							</p>
+							<p class="ms-4">
+								<a class="profile-link text-decoration-none" href="<%=user.resume_link%>"><i class="me-2 fas fa-external-link-alt"></i><strong>Resume</strong></a>
+							</p>
+							<p class="ms-4">
+								<a class="profile-link text-decoration-none" href="<%=user.documents_link%>"><i class="me-2 fas fa-external-link-alt"></i><strong>Documents</strong></a>
+							</p>
+						</div>
+		        	</div>
+		        </div>
+        	</div>
+        	<div class="col-lg-6 mb-5">
+        		<div class="card">
+        			<div class="card-body">
+        				<h4 class="card-title"><i id="color-red" class="me-3 fas fa-clipboard-check"></i>Applied Jobs</h4>
+        				<div class="p-3 card-text">
+                            <% if(user.appliedJobs.length == 0){ %>
+                                <p><em>You have not applied to any jobs yet, you can search for jobs <a class="text-decoration-none" id="color-red" href="/jobs">here</a></em></p>
+                            <% } else { %>
+            					<% user.appliedJobs.slice().reverse().forEach(function(job){ %>
+    								<p>
+    									<a class="ms-4 text-decoration-none" id="color-red" href="/jobs/<%=job._id%>"><strong><%=job.name%></strong></a> - <em><%=job.status%></em>
+    								</p>
+    							<% }) %>
+                            <% } %>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<section style="padding-top: 90px; padding-bottom: 120px;" class="text-decoration-none home-text clearfix bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget">
+                    <h3 class="text-uppercase">About Us</h3>
+                    <p class="footer-text fs-6 lead mt-3">
+                        HireHub is a leading job portal platform that brings a lot of benefits to both job providers and job finders!
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget">
+                    <h3 class="text-uppercase">Contact Info</h3>
+                    <p class="footer-text fs-6 lead mt-3">Address :HireHub Main Office, New Delhi, India</p>
+                    <p class="footer-text fs-6 lead mt-3">Phone : +91 9999888877</p>
+                    <p class="footer-text fs-6 lead mt-3">Email : info@hirehub.com</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget social-widget">
+                    <h3 class="text-uppercase mb-3">Important Links</h3>
+                    <ul style="list-style-type: none; padding: 0; margin: 0;">
+                        <li><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-facebook-square"></i> Facebook</a></li>
+                        <li class="mt-2"><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li class="mt-2"><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li class="mt-2"><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-youtube"></i> youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget news-letter">
+                    <h3 class="text-uppercase">Job Portal</h3>
+                    <p class="footer-text fs-6 lead mt-3">View job listings from world's leading recruitment companies</p>
+                    <form action="/jobs" method="GET">
+                        <input type="text" class="footer-text form-control mb-3" placeholder="Job/Company Name">
+                        <button type="submit" class="btn btn-danger">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <h1>
+	User profile for user: <%=user.name%>
+</h1>
+<p>
+	<strong>username: </strong><%=user.username%>
+</p>
+<p>
+	<strong>branch: </strong><%=user.branch%>
+</p>
+<p>
+	<strong>cgpa: </strong><%=user.cgpa%>
+</p>
+<p>
+	<strong>personal email: </strong><%=user.personal_email%>
+</p>
+<p>
+	<strong>mobile number: </strong><%=user.mobile_number%>
+</p>
+<p>
+	<a href="<%=user.resume_link%>">resume link</a>
+</p>
+<p>
+	<a href="<%=user.documents_link%>">documents link</a>
+</p>
+
+
+<% if(currentUser && user._id.equals(currentUser._id) || currentUser && currentUser.admin){ %>
+	<a href="/users/<%=user._id%>/edit" class="btn btn-warning">edit</a>
+<% } %>
+
+<a href="/jobs" class="btn btn-primary">go back</a>
+
+<h1>
+	list of applied jobs
+</h1>
+<% user.appliedJobs.forEach(function(job){ %>
+<p>
+	<a href="/jobs/<%=job._id%>"><strong><%=job.name%></strong></a> - <em><%=job.description%></em>
+</p>
+<% }) %> -->
+<%- include('../partials/footer'); -%>

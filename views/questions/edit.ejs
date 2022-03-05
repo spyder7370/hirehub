@@ -1,0 +1,98 @@
+<%- include('../partials/jobHeader'); -%>
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-lg-6">
+            <img src="/images/edit-question.svg"
+                id="login-img" alt="">
+        </div>
+        <div class="col-lg-6">
+            <main class="form-signin mt-5">
+                <form action="/job/<%=jobId%>/questions/<%=question._id%>?_method=PUT" method="POST">
+                    <h1 class="h3 fs-3 mb-3 lead text-center">Edit question: <%=question.description%> </h1>
+
+                    <div class="form-floating">
+                        <textarea style="height: 80px;" type="text" class="form-control mid-input" id="questionDesc" name="question[description]" required><%=question.description%></textarea>
+                        <label for="questionDesc">Description</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control mid-input" id="option1" name="question[option1]" value="<%=question.option1%>" required>
+                        <label for="option1">Option 1</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="option2" name="question[option2]" value="<%=question.option2%>" required>
+                        <label for="option2">Option 2</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control mid-input" id="option3" name="question[option3]" value="<%=question.option3%>" required>
+                        <label for="option3">Option 3</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control mid-input" id="option4" name="question[option4]" value="<%=question.option4%>" required>
+                        <label for="option4">Option 4</label>
+                    </div>
+
+                    <div class="form-floating">
+                    	<select name="question[correctAns]" class="form-select mid-input" id="correctAns" required>
+                    		<option value="option1">Option 1</option>
+                    		<option value="option2">Option 2</option>
+                    		<option value="option3">Option 3</option>
+                    		<option value="option4">Option 4</option>
+                    	</select>
+                    	<label for="correctAns">Correct Option</label>
+                    </div>
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Edit Question</button>
+                </form>
+            </main>
+            <div class="form-signin">
+                <a href="/job/<%=jobId%>/questions">Go back</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<%- include('../partials/footer'); -%>
+
+<!-- <%- include('../partials/jobHeader'); -%>
+<div class = "container">
+	<div class="row justify-content-center">
+		<header class="h-100 p-5 bg-light border rounded-3">
+		<h1 style="text-align: center;">edit question <%=question.description%></h1>
+		</header>
+		
+		<div style="width: 30%; margin: 25px auto;">
+			<form action="/job/<%=jobId%>/questions/<%=question._id%>?_method=PUT" method="POST">
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[description]" value="<%=question.description%>">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[option1]" value="<%=question.option1%>">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[option2]" value="<%=question.option2%>">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[option3]" value="<%=question.option3%>">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[option4]" value="<%=question.option4%>">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[correctAns]" value="<%=question.correctAns%>">
+				</div>
+				<div class="form-group">
+					<div class="d-grid gap-2">
+					  <button class="btn btn-primary" type="submit">Submit</button>
+					</div>
+				</div>
+			</form>
+			<a href ="/jobs">Go back</a>
+		</div>
+	</div>
+</div>
+<%- include('../partials/footer'); -%> -->

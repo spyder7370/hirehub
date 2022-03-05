@@ -1,0 +1,93 @@
+<%- include('../partials/jobHeader'); -%>
+
+<div class="show-page">
+	<div style="padding-top: 60px; padding-bottom: 60px; background-image: url(/images/question-page.svg); background-repeat: no-repeat; background-position: 50% 25%;" class="online-cv section-overly pt-90 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-10">
+                    <div class="cv-caption text-center">
+                        <p class="pera2 mt-5">Manage Test Questions for Job: <br> <%= job.name %></p>
+                        <a href="/jobs/<%=job._id%>" class="home-text text-decoration-none border-btn2 border-btn4">Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+	    <div class="row d-flex justify-content-center">
+	    	<div class="col-lg-8">
+	    		<div class="text-center lead fs-1">List of Questions</div>
+	    		<p class="text-center mt-3">
+	    			<a href="/job/<%=job._id%>/questions/new" class="btn btn-outline-primary">Add a New Question</a>
+	    		</p>
+	    		<% job.questions.forEach(function(question){ %>
+	    			<hr>
+					<div class="card mb-5">
+						<div class="card-body">
+							<h4 class="lead fs-3">
+								<%=question.description%>
+							</h4>
+							<ul>
+								<li>OPTION 1: <%=question.option1%></li>
+								<li>OPTION 2: <%=question.option2%></li>
+								<li>OPTION 3: <%=question.option3%></li>
+								<li>OPTION 4: <%=question.option4%></li>
+								<li class="mt-1 fw-bold">CORRECT OPTION: <%=question.correctAns%></li>
+							</ul>
+							<a href="/job/<%=job._id%>/questions/<%=question._id%>/edit" class="btn btn-outline-warning"><i class="fas fa-pen"></i></a>
+							<form class="d-inline ms-2" action="/job/<%=job._id%>/questions/<%=question._id%>?_method=DELETE" method="POST">
+								<button class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
+							</form>
+						</div>
+					</div>
+				<% }) %>
+	    	</div>
+	    </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- <h1>
+	HIRE HUB TEST SHOW PAGE FOR JOB 
+	<%=job.name%>
+</h1>
+
+<a href="/jobs">go back</a>
+
+
+
+	<h1>
+		list of questions
+	</h1>
+	<% job.questions.forEach(function(question){ %>
+	<div>
+		<h4>
+			<%=question.description%>
+		</h4>
+		<ul>
+			<li>option 1: <%=question.option1%></li>
+			<li>option 2: <%=question.option2%></li>
+			<li>option 3: <%=question.option3%></li>
+			<li>option 4: <%=question.option4%></li>
+			<li>correct option: <%=question.correctAns%></li>
+			<li><a href="/job/<%=job._id%>/questions/<%=question._id%>/edit" class="btn btn-primary">edit</a></li>
+			<li>
+				<form action="/job/<%=job._id%>/questions/<%=question._id%>?_method=DELETE" method="POST">
+					<button class="btn btn-primary">delete</button>
+				</form>
+			</li>
+		</ul>
+	</div>
+	<% }) %>
+<a class="btn btn-primary" href="/job/<%=job._id%>/questions/new">add a new question</a>
+
+<% if(currentUser && currentUser.admin){ %>
+<% } %> -->
+
+<%- include('../partials/footer'); -%>

@@ -1,0 +1,15 @@
+<%- include('../partials/notificationHeader'); -%>
+
+<h1>
+	<%=notification.description%>
+</h1>
+<p>
+	posted by: <%=notification.author%>
+</p>
+<% if(currentUser && currentUser.admin){ %>
+	<form action="/notifications/<%=notification._id%>?_method=DELETE" method="POST">
+		<button class="btn btn-primary">delete</button>
+	</form>
+<% } %>
+<a href="/notifications">go back</a>
+<%- include('../partials/footer'); -%>

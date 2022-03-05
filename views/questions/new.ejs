@@ -1,0 +1,110 @@
+<%- include('../partials/jobHeader'); -%>
+<div class="container">
+    <div class="row mt-2">
+        <div class="col-lg-6">
+            <img src="/images/add-question.svg"
+                id="login-img" alt="">
+        </div>
+        <div class="col-lg-6">
+            <main class="form-signin mt-5">
+                <form action="/job/<%=job._id%>/questions" method="POST">
+                    <h1 class="h3 fs-3 mb-3 lead text-center">Add a new question to job: <%=job.name%> </h1>
+
+                    <div class="form-floating">
+                        <textarea style="height: 80px;" type="text" class="form-control mid-input" id="questionDesc" name="question[description]" placeholder="Description" required></textarea>
+                        <label for="questionDesc">Description</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control mid-input" id="option1" name="question[option1]" placeholder="Option 1" required>
+                        <label for="option1">Option 1</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="option2" name="question[option2]" placeholder="Option 2" required>
+                        <label for="option2">Option 2</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control mid-input" id="option3" name="question[option3]" placeholder="Option 3" required>
+                        <label for="option3">Option 3</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control mid-input" id="option4" name="question[option4]" placeholder="Option 4" required>
+                        <label for="option4">Option 4</label>
+                    </div>
+
+                    <div class="form-floating">
+                    	<select name="question[correctAns]" class="form-select mid-input" id="correctAns" required>
+                    		<option value="option1">Option 1</option>
+                    		<option value="option2">Option 2</option>
+                    		<option value="option3">Option 3</option>
+                    		<option value="option4">Option 4</option>
+                    	</select>
+                    	<label for="correctAns">Correct Option</label>
+                    </div>
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Add Question</button>
+                </form>
+            </main>
+            <div class="form-signin">
+                <a href="/job/<%=job._id%>/questions">Go back</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<%- include('../partials/footer'); -%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <%- include('../partials/jobHeader'); -%>
+<div class = "container">
+	<div class="row justify-content-center">
+		<header class="h-100 p-5 bg-light border rounded-3">
+		<h1 style="text-align: center;">Create a new question for job <%=job.name%></h1>
+		</header>
+		
+		<div style="width: 30%; margin: 25px auto;">
+			<form action="/job/<%=job._id%>/questions" method="POST">
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[description]" placeholder="description">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[option1]" placeholder="option 1">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[option2]" placeholder="option 2">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[option3]" placeholder="option 3">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[option4]" placeholder="option 4">
+				</div>
+				<div class="input-group mb-3">
+					<input class="form-control" type="text" name="question[correctAns]" placeholder="correct answer">
+				</div>
+				<div class="form-group">
+					<div class="d-grid gap-2">
+					  <button class="btn btn-primary" type="submit">Submit</button>
+					</div>
+				</div>
+			</form>
+			<a href ="/jobs">Go back</a>
+		</div>
+	</div>
+</div>
+<%- include('../partials/footer'); -%> -->

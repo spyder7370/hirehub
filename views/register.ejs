@@ -1,0 +1,54 @@
+<%- include('./partials/registerHeader'); -%>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-6">
+            <img src="https://preview.colorlib.com/theme/bootstrap/login-form-07/images/undraw_remotely_2j6y.svg"
+                id="login-img" alt="">
+        </div>
+        <div class="col-lg-6">
+            <main class="form-signin mt-5">
+                <form action="/register" method="POST">
+                    <h1 class="h3 fs-3 mb-3 lead text-center">Please fill the details</h1>
+
+                    <div class="form-floating">
+                        <input type="email" class="form-control mid-input" id="firstName" name="email"
+                            placeholder="Email ID" required>
+                        <label for="firstName">Email ID</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="registerName" name="name" placeholder="Name"
+                            requierd>
+                        <label for="registerName">Name</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="text" class="form-control mid-input" id="lastName" name="branch"
+                            placeholder="branch" required>
+                        <label for="lastName">Branch</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="number" class="form-control mid-input" id="useremail" name="cgpa"
+                            placeholder="CGPA" required min="0.10" max="10.00" step="0.01">
+                        <label for="useremail">CGPA</label>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" name="password"
+                            placeholder="Password" required>
+                        <label for="floatingPassword">Password</label>
+                    </div>
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Register student</button>
+                </form>
+            </main>
+            <div class="form-signin">
+                <a href="/home">Go back</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>Hire Hub</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="/stylesheets/main.css">
+
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+		  <div class="container-fluid">
+		    <a class="navbar-brand" href="/"><i class="fas fa-graduation-cap"></i> Hirehub</a>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" id="navbarNav">
+		      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+		        <li class="nav-item">
+		          <a href="/home" class="nav-link " >Home</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="/jobs">Jobs</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="/notifications">Notifications</a>
+		        </li>
+		      </ul>
+		      <ul class="navbar-nav navbar-right">
+				  <% if(!currentUser){ %>
+					  <li class="nav-item"><a class="nav-link" href="/">Login</a></li>
+					  <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+				  <% } else { %>
+				      <% if(currentUser && currentUser.admin){ %>
+				          <li class="nav-item"><a class="nav-link active" href="/register"><i class="me-2 fas fa-user-plus"></i> Register student</a></li>
+				      <% } %>
+					  <li><a href="/users/<%=currentUser._id%>" class = "nav-link"><i class="me-2 fas fa-users-cog"></i> Signed in as <%= currentUser.name%> </a></li>
+					  <li class="nav-item"><a class="nav-link" href="/logout"><i class="me-2 fas fa-sign-out-alt"></i> Logout</a></li>
+					  <% if(currentUser && currentUser.admin){ %>
+				      	  <li class="ms-2 nav-item"><a class="nav-link btn btn-sm btn-danger active fw-bold" href="/jobs/new">Post A Job</a></li>
+				      <% } %>
+				  <% } %>
+			  </ul>
+		    </div>
+		  </div>
+		</nav>
+		
+		<% if((error && error.length > 0) || (success && success.length > 0)){ %>
+			<div class="show-page">
+				<div class="flash-container container p-3">
+
+					<% if(error && error.length > 0){ %>
+                        <div class=" mt-0 mb-0 alert alert-danger alert-dismissible fade show" role="alert">
+                            <%= error %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <% } %>
+
+                    <% if(success && success.length > 0){ %>
+                        <div class=" mt-0 mb-0 alert alert-success alert-dismissible fade show" role="alert">
+                            <%= success %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <% } %>
+
+				</div>
+			</div>
+		<% } %>

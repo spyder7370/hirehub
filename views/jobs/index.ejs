@@ -1,0 +1,157 @@
+<%- include('../partials/jobHeader'); -%>
+
+
+<!-- resume section -->
+<div style="padding-top: 120px; padding-bottom: 150px; background-image: url(/images/get-your-job.svg); background-repeat: no-repeat; background-position: 50% 25%;" class="online-cv section-overly pt-90 pb-120">
+    <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-10">
+            <div class="cv-caption text-center">
+                <p class="pera2"> Get Your Job</p>
+                <div class="d-flex justify-content-center">
+                    <div class="job-search-field">
+                        <div class="job-search-item">
+                            <form action="/jobs" method="GET" class="form row">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-3">
+                                        <div class="home-text d-flex">
+                                            <label class="form-label">What</label>
+                                            <span class="ms-auto">e.g. job, company</span>
+                                        </div>
+                                        <div class="position-relative left-icon">
+                                            <input type="text" class="form-control" name="search" placeholder="Job title, or company">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="form-group form-action mb-3">
+                                        <button type="submit" class="btn btn-danger btn-lg"><i class="fas fa-search"></i> Find Jobs</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="container mt-5 mb-5">
+	<h3 class="text-uppercase fw-bold mb-5">Job listings</h3>
+    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+
+        <div class="col-lg-12">
+            <% if(noMatch !== null) { %>
+                <h3>
+                    <%= noMatch %>
+                </h3>
+                <br>
+                <div class="d-flex justify-content-center">
+                    <div class="job-search-field">
+                        <div class="job-search-item">
+                            <form action="/jobs" method="GET" class="form row">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-3">
+                                        <div class="home-text d-flex">
+                                            <label class="form-label">What</label>
+                                            <span class="ms-auto">e.g. job, company</span>
+                                        </div>
+                                        <div class="position-relative left-icon">
+                                            <input type="text" class="form-control" name="search" placeholder="Job title, or company">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <div class="form-group form-action mb-3">
+                                        <button type="submit" class="btn btn-danger btn-lg"><i class="fas fa-search"></i> Find Jobs</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+
+        <% for ( var i=jobs.length-1; i>=0; i--){ %>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card text-dark bg-light">
+                <div class="card-header text-start"><em>Status: <%= jobs[i].status %></em></div>
+                <div class="card-body">
+                    <img src="<%= jobs[i].logo%>" alt="job logo" class="card-img-top" style="width: 40%; height: auto;">
+                    <h5 class="card-title mt-3">
+                        <%=jobs[i].name%>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">CGPA Requirement:
+                        <%=jobs[i].eligibility%>
+                    </h6>
+                    <p class="card-text">
+                        <% if(jobs[i].description.length <= 100){ %>
+                            <%= jobs[i].description %>
+                        <% } else { %>
+                            <%- jobs[i].description.substring(0,80) %> ...
+                        <% } %>
+                    </p>
+                    <a href="/jobs/<%= jobs[i]._id%>" class="btn btn-outline-danger">More Info</a>
+                </div>
+                <div class="card-footer text-muted">
+                    <%= moment(jobs[i].createdAt).fromNow() %>
+                </div>
+            </div>
+        </div>
+        <br>
+        <% } %>
+    </div>
+</div>
+
+
+<!-- footer -->
+<section style="padding-top: 90px; padding-bottom: 120px;" class="text-decoration-none home-text clearfix bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget">
+                    <h3 class="text-uppercase">About Us</h3>
+                    <p class="footer-text fs-6 lead mt-3">
+                        HireHub is a leading job portal platform that brings a lot of benefits to both job providers and job finders!
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget">
+                    <h3 class="text-uppercase">Contact Info</h3>
+                    <p class="footer-text fs-6 lead mt-3">Address :HireHub Main Office, New Delhi, India</p>
+                    <p class="footer-text fs-6 lead mt-3">Phone : +91 9999888877</p>
+                    <p class="footer-text fs-6 lead mt-3">Email : info@hirehub.com</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget social-widget">
+                    <h3 class="text-uppercase mb-3">Important Links</h3>
+                    <ul style="list-style-type: none; padding: 0; margin: 0;">
+                        <li><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-facebook-square"></i> Facebook</a></li>
+                        <li class="mt-2"><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li class="mt-2"><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li class="mt-2"><a class="footer-link fs-6 lead text-decoration-none home-text" href="#"><i class="fab fa-youtube"></i> youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 px-4">
+                <div class="footer-widget news-letter">
+                    <h3 class="text-uppercase">Job Portal</h3>
+                    <p class="footer-text fs-6 lead mt-3">View job listings from world's leading recruitment companies</p>
+                    <form action="/jobs" method="GET">
+                        <input name="search" type="text" class="footer-text form-control mb-3" placeholder="Job/Company Name">
+                        <button type="submit" class="btn btn-danger">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<%- include('../partials/footer'); -%>
