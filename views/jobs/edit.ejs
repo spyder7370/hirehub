@@ -1,9 +1,9 @@
 <%- include('../partials/jobHeader'); -%>
+<link rel="stylesheet" href="/stylesheets/form.css">
 <div class="container">
     <div class="row mt-2">
         <div class="col-lg-6">
-            <img src="/images/edit_job.svg"
-                id="login-img" alt="">
+            <img src="/images/edit_job.svg" id="login-img" alt="">
         </div>
         <div class="col-lg-6">
             <main class="form-signin mt-5">
@@ -11,52 +11,59 @@
                     <h1 class="h3 fs-3 mb-3 lead text-center">Edit job "<%=job.name%>"</h1>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="jobTitle" name="job[name]" value="<%=job.name%>" required>
+                        <input type="text" class="form-control mid-input" id="jobTitle" name="job[name]"
+                            value="<%=job.name%>" required>
                         <label for="jobTitle">Job Title</label>
                     </div>
 
                     <div class="form-floating">
-                    	<select name="job[time]" class="form-select mid-input" id="type" required>
-                    		<option value="Full-Time">Full-Time</option>
-                    		<option value="Part-Time">Part-Time</option>
-                    		<option value="Temporary">Temporary</option>
-                    		<option value="Seasonal">Seasonal</option>
-                    	</select>
-                    	<label for="type">Job Type</label>
+                        <select name="job[time]" class="form-select mid-input" id="type" required>
+                            <option value="Full-Time">Full-Time</option>
+                            <option value="Part-Time">Part-Time</option>
+                            <option value="Temporary">Temporary</option>
+                            <option value="Seasonal">Seasonal</option>
+                        </select>
+                        <label for="type">Job Type</label>
                     </div>
 
                     <div class="form-floating">
-                    	<select name="job[category]" class="form-select mid-input" id="category" required>
-                    		<option value="Software Engineer">Software Engineer</option>
-                    		<option value="Program Developer">Program Developer</option>
-                    		<option value="Program Manager">Program Manager</option>
-                    		<option value="Graphics Designer">Graphics Designer</option>
-                    	</select>
-                    	<label for="category">Job Category</label>
+                        <select name="job[category]" class="form-select mid-input" id="category" required>
+                            <option value="Software Engineer">Software Engineer</option>
+                            <option value="Program Developer">Program Developer</option>
+                            <option value="Program Manager">Program Manager</option>
+                            <option value="Graphics Designer">Graphics Designer</option>
+                        </select>
+                        <label for="category">Job Category</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="registerName" name="job[eligibility]" value="<%=job.eligibility%>" required>
+                        <input type="text" class="form-control" id="registerName" name="job[eligibility]"
+                            value="<%=job.eligibility%>" required>
                         <label for="registerName">Eligibility Criteria</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="date" class="form-control mid-input" id="deadline" name="job[deadline]" value="<%= job.deadline %>" required>
+                        <input type="date" class="form-control mid-input" id="deadline" name="job[deadline]"
+                            value="<%= job.deadline %>" required>
                         <label for="deadline">Job Deadline</label>
                     </div>
 
                     <div class="form-floating">
-                        <textarea style="height: 150px;" type="text" class="form-control mid-input" id="lastName" name="job[description]" required><%= job.description %></textarea>
+                        <textarea style="height: 150px;" type="text" class="form-control mid-input" id="lastName"
+                            name="job[description]" required><%= job.description %></textarea>
                         <label for="lastName">Job Description</label>
                     </div>
 
                     <div class="form-floating">
-                        <textarea style="height: 150px;" type="text" class="form-control mid-input" id="responsibilities" name="job[responsibilities]" required><%= job.responsibilities %></textarea>
+                        <textarea style="height: 150px;" type="text" class="form-control mid-input"
+                            id="responsibilities" name="job[responsibilities]"
+                            required><%= job.responsibilities %></textarea>
                         <label for="responsibilities">Job Responsibilities</label>
                     </div>
 
                     <div class="form-floating">
-                        <textarea style="height: 150px;" type="text" class="form-control mid-input" id="requirements" name="job[requirements]" required><%= job.requirements %></textarea>
+                        <textarea style="height: 150px;" type="text" class="form-control mid-input" id="requirements"
+                            name="job[requirements]" required><%= job.requirements %></textarea>
                         <label for="requirements">Job Requirements</label>
                     </div>
 
@@ -66,54 +73,55 @@
                     </div> -->
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="location" name="job[location]" value="<%= job.location %>" required>
+                        <input type="text" class="form-control mid-input" id="location" name="job[location]"
+                            value="<%= job.location %>" required>
                         <label for="location">Company Location</label>
                     </div>
 
                     <div class="form-floating">
-                    	<select name="job[experience]" class="form-select mid-input" id="experience" required>
-                    		<option value="Entry Level">Entry Level</option>
-                    		<option value="Mid Level">Mid Level</option>
-                    		<option value="Mid-Senior Level">Mid-Senior Level</option>
-                    		<option value="Top Level">Top Level</option>
-                    	</select>
-                    	<label for="experience">Experience</label>
+                        <select name="job[experience]" class="form-select mid-input" id="experience" required>
+                            <option value="Entry Level">Entry Level</option>
+                            <option value="Mid Level">Mid Level</option>
+                            <option value="Mid-Senior Level">Mid-Senior Level</option>
+                            <option value="Top Level">Top Level</option>
+                        </select>
+                        <label for="experience">Experience</label>
                     </div>
 
                     <div class="lead fs-4 text-center mt-3 mb-3">
-                    	Company Details
+                        Company Details
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="companysize" name="job[companySize]" value="<%= job.companySize %>" required>
+                        <input type="text" class="form-control mid-input" id="companysize" name="job[companySize]"
+                            value="<%= job.companySize %>" required>
                         <label for="companysize">Company Size</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="companyphone" name="job[companyPhone]" value="<%= job.companyPhone %>" required>
+                        <input type="text" class="form-control mid-input" id="companyphone" name="job[companyPhone]"
+                            value="<%= job.companyPhone %>" required>
                         <label for="companyphone">Company Phone</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="email" class="form-control mid-input" id="companyemail" name="job[companyEmail]" value="<%= job.companyEmail%>" required>
+                        <input type="email" class="form-control mid-input" id="companyemail" name="job[companyEmail]"
+                            value="<%= job.companyEmail%>" required>
                         <label for="companyemail">Company Email</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="url" class="form-control mid-input" id="companywebsite" name="job[companyWebsite]" value="<%= job.companyWebsite %>" required>
+                        <input type="url" class="form-control mid-input" id="companywebsite" name="job[companyWebsite]"
+                            value="<%= job.companyWebsite %>" required>
                         <label for="companywebsite">Company Website</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="useremail" name="job[logo]" value="<%=job.logo%>" required>
-                        <label for="useremail">Logo URL</label>
-                    </div>
-
-                    <div class="form-floating">
-                        <input type="number" class="form-control" id="jobStipend" name="job[stipend]" value="<%=job.stipend%>" required min="0" step="1000">
+                        <input type="number" class="form-control" id="jobStipend" name="job[stipend]"
+                            value="<%=job.stipend%>" required min="0" step="1000">
                         <label for="jobStipend">Job Stipend</label>
-                    </div>
 
+                    </div>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Edit Job</button>
                 </form>
             </main>
@@ -125,53 +133,5 @@
 
 </div>
 
+<script src="/scripts/form.js"></script>
 <%- include('../partials/footer'); -%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <%- include('../partials/jobHeader'); -%>
-<div class = "container">
-	<div class="row justify-content-center">
-		JUMBOTRON
-		<header class="h-100 p-5 bg-light border rounded-3">
-		<h1 style="text-align: center;">edit job <%=job.name%></h1>
-		</header>
-		
-		FORM
-		<div style="width: 30%; margin: 25px auto;">
-			<form action="/jobs/<%=job._id%>?_method=PUT" method="POST">
-				<div class="input-group mb-3">
-					<input class="form-control" type="text" name="job[name]" value="<%=job.name%>">
-				</div>
-				<div class="input-group mb-3">
-					<input class="form-control" type="text" name="job[eligibility]" value="<%=job.eligibility%>">
-				</div>
-				<div class="input-group mb-3">
-					<input class="form-control" type="text" name="job[description]" value="<%=job.description%>">
-				</div>
-				<div class="input-group mb-3">
-					<input class="form-control" type="text" name="job[logo]" value="<%=job.logo%>">
-				</div>
-				<div class="input-group mb-3">
-					<input class="form-control" type="number" name="job[stipend]" value="<%=job.stipend%>">
-				</div>
-				<div class="form-group">
-					<div class="d-grid gap-2">
-					  <button class="btn btn-primary" type="submit">Submit</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-<%- include('../partials/footer'); -%> -->

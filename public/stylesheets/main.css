@@ -8,7 +8,7 @@ body {
 
 
 .show-page {
-  background-color: #F6F6F7;
+    background-color: #F6F6F7;
 }
 
 .job-search-item {
@@ -345,7 +345,7 @@ body {
 }
 
 .personal-info {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .banner {
@@ -407,6 +407,14 @@ body {
 }
 
 .form-signin input[type="number"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.form-signin input[type="file"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
@@ -743,8 +751,9 @@ border-btn4 {
     transform: scaleY(1);
     order: 2px solid transparent
 }
-.border-btn2:hover{
-    color:  #fff;
+
+.border-btn2:hover {
+    color: #fff;
 }
 
 .borderbtn2 {
@@ -798,32 +807,34 @@ border-btn4 {
     transform: scaleY(1);
     order: 2px solid transparent
 }
-.borderbtn2:hover{
-    color:  #fb246a;
+
+.borderbtn2:hover {
+    color: #fb246a;
     border: 1px solid #fb246a;
 }
 
-#footer-form:focus{
-  outline: none;
-}
-.footer-text{
-color: #868c98;
+#footer-form:focus {
+    outline: none;
 }
 
-.footer-link{
-  color: #868c98;
+.footer-text {
+    color: #868c98;
 }
 
-.footer-link:hover{
-  color: #fff;
+.footer-link {
+    color: #868c98;
 }
 
-.profile-link{
-  color: #000;
+.footer-link:hover {
+    color: #fff;
 }
 
-.profile-link:hover{
-  color: #fb246a;
+.profile-link {
+    color: #000;
+}
+
+.profile-link:hover {
+    color: #fb246a;
 }
 
 .breadcrumb>.active {
@@ -894,4 +905,16 @@ color: #868c98;
 
 #user-profile {
     font-family: 'Open Sans', sans-serif;
+}
+
+.navbar .container-fluid {
+    margin: 0rem 2rem;
+}
+
+.navbar .container-fluid li {
+    margin: 0rem 0.2rem;
+}
+
+#file-input {
+    padding-top: 2rem;
 }

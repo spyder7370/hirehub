@@ -2,56 +2,64 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
-            <img src="/images/user_profile.svg"
-                id="login-img" alt="">
+            <img src="/images/user_profile.svg" id="login-img" alt="">
         </div>
         <div class="col-lg-6">
             <main class="form-signin mt-5">
-                <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+                <form action="/users/<%=user._id%>?_method=PUT" method="POST" , enctype="multipart/form-data">
                     <h1 class="h3 fs-3 mb-3 lead text-center">Edit user "<%=user.name%>"</h1>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="jobTitle" name="user[name]" value="<%=user.name%>" disabled>
+                        <input type="text" class="form-control mid-input" id="jobTitle" name="user[name]"
+                            value="<%=user.name%>" disabled>
                         <label for="jobTitle">User Name</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="registerName" name="user[username]" value="<%=user.username%>" disabled>
+                        <input type="text" class="form-control" id="registerName" name="user[username]"
+                            value="<%=user.username%>" disabled>
                         <label for="registerName">UserID</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="lastName" name="user[branch]" value="<%=user.branch%>" disabled>
+                        <input type="text" class="form-control mid-input" id="lastName" name="user[branch]"
+                            value="<%=user.branch%>" disabled>
                         <label for="lastName">User Branch</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="useremail" name="user[cgpa]" value="<%=user.cgpa%>" disabled>
+                        <input type="text" class="form-control mid-input" id="useremail" name="user[cgpa]"
+                            value="<%=user.cgpa%>" disabled>
                         <label for="useremail">User CGPA</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="useremail" name="personal_email" value="<%=user.personal_email%>">
+                        <input type="text" class="form-control mid-input" id="useremail" name="personal_email"
+                            value="<%=user.personal_email%>">
                         <label for="useremail">User Personal EmailID</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="useremail" name="mobile_number" value="<%=user.mobile_number%>">
+                        <input type="text" class="form-control mid-input" id="useremail" name="mobile_number"
+                            value="<%=user.mobile_number%>">
                         <label for="useremail">User Mobile No</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="avatar" name="avatar" value="<%=user.avatar%>">
-                        <label for="avatar">Avatar URL</label>
+                        <input class="form-control mid-file" type="file" name="image" id="file-input">
+                        <!-- <input type="text" class="form-control mid-input" id="avatar" name="avatar" value="<%=user.avatar%>"> -->
+                        <label for="file-input">Avatar URL</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="useremail" name="resume_link" value="<%=user.resume_link%>">
+                        <input type="text" class="form-control mid-input" id="useremail" name="resume_link"
+                            value="<%=user.resume_link%>">
                         <label for="useremail">User Resume Link</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="notifAuthor" name="documents_link" value="<%=user.documents_link%>">
+                        <input type="text" class="form-control" id="notifAuthor" name="documents_link"
+                            value="<%=user.documents_link%>">
                         <label for="notifAuthor">User Documents Link</label>
                     </div>
 

@@ -2,8 +2,7 @@
 <div class="container">
     <div class="row mt-2">
         <div class="col-lg-6">
-            <img src="/images/add_job.svg"
-                id="login-img" alt="">
+            <img src="/images/add_job.svg" id="login-img" alt="">
         </div>
         <div class="col-lg-6">
             <main class="form-signin mt-5">
@@ -11,96 +10,106 @@
                     <h1 class="h3 fs-3 mb-3 lead text-center">Post a new job</h1>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="jobTitle" name="job[name]" placeholder="Title" required>
+                        <input type="text" class="form-control mid-input" id="jobTitle" name="job[name]"
+                            placeholder="Title" required>
                         <label for="jobTitle">Job Title</label>
                     </div>
 
-                     <div class="form-floating">
-                    	<select name="job[time]" class="form-select mid-input" id="type" required>
-                    		<option value="Full-Time">Full-Time</option>
-                    		<option value="Part-Time">Part-Time</option>
-                    		<option value="Temporary">Temporary</option>
-                    		<option value="Seasonal">Seasonal</option>
-                    	</select>
-                    	<label for="type">Job Type</label>
+                    <div class="form-floating">
+                        <select name="job[time]" class="form-select mid-input" id="type" required>
+                            <option value="Full-Time">Full-Time</option>
+                            <option value="Part-Time">Part-Time</option>
+                            <option value="Temporary">Temporary</option>
+                            <option value="Seasonal">Seasonal</option>
+                        </select>
+                        <label for="type">Job Type</label>
                     </div>
 
                     <div class="form-floating">
-                    	<select name="job[category]" class="form-select mid-input" id="category" required>
-                    		<option value="Software Engineer">Software Engineer</option>
-                    		<option value="Program Developer">Program Developer</option>
-                    		<option value="Program Manager">Program Manager</option>
-                    		<option value="Graphics Designer">Graphics Designer</option>
-                    	</select>
-                    	<label for="category">Job Category</label>
+                        <select name="job[category]" class="form-select mid-input" id="category" required>
+                            <option value="Software Engineer">Software Engineer</option>
+                            <option value="Program Developer">Program Developer</option>
+                            <option value="Program Manager">Program Manager</option>
+                            <option value="Graphics Designer">Graphics Designer</option>
+                        </select>
+                        <label for="category">Job Category</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="registerName" name="job[eligibility]" placeholder="Eligibility" required>
+                        <input type="text" class="form-control" id="registerName" name="job[eligibility]"
+                            placeholder="Eligibility" required>
                         <label for="registerName">Eligibility Criteria</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="date" class="form-control mid-input" id="deadline" name="job[deadline]" placeholder="Deadline" required>
+                        <input type="date" class="form-control mid-input" id="deadline" name="job[deadline]"
+                            placeholder="Deadline" required>
                         <label for="deadline">Job Deadline</label>
                     </div>
 
                     <div class="form-floating">
-                        <textarea style="height: 150px;" type="text" class="form-control mid-input" id="lastName" name="job[description]" placeholder="Description" required></textarea>
+                        <textarea style="height: 150px;" type="text" class="form-control mid-input" id="lastName"
+                            name="job[description]" placeholder="Description" required></textarea>
                         <label for="lastName">Job Description</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="location" name="job[location]" placeholder="Location" required>
+                        <input type="text" class="form-control mid-input" id="location" name="job[location]"
+                            placeholder="Location" required>
                         <label for="location">Company Location</label>
                     </div>
 
                     <div class="form-floating">
-                    	<select name="job[experience]" class="form-select mid-input" id="experience" required>
-                    		<option value="Entry Level">Entry Level</option>
-                    		<option value="Mid Level">Mid Level</option>
-                    		<option value="Mid-Senior Level">Mid-Senior Level</option>
-                    		<option value="Top Level">Top Level</option>
-                    	</select>
-                    	<label for="experience">Experience</label>
+                        <select name="job[experience]" class="form-select mid-input" id="experience" required>
+                            <option value="Entry Level">Entry Level</option>
+                            <option value="Mid Level">Mid Level</option>
+                            <option value="Mid-Senior Level">Mid-Senior Level</option>
+                            <option value="Top Level">Top Level</option>
+                        </select>
+                        <label for="experience">Experience</label>
                     </div>
 
                     <div class="lead fs-4 text-center mt-3 mb-3">
-                    	Company Details
+                        Company Details
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="companysize" name="job[companySize]" placeholder="Company Size" required>
+                        <input type="text" class="form-control mid-input" id="companysize" name="job[companySize]"
+                            placeholder="Company Size" required>
                         <label for="companysize">Company Size</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control mid-input" id="companyphone" name="job[companyPhone]" placeholder="Company Phone" required>
+                        <input type="text" class="form-control mid-input" id="companyphone" name="job[companyPhone]"
+                            placeholder="Company Phone" required>
                         <label for="companyphone">Company Phone</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="email" class="form-control mid-input" id="companyemail" name="job[companyEmail]" placeholder="Company Email" required>
+                        <input type="email" class="form-control mid-input" id="companyemail" name="job[companyEmail]"
+                            placeholder="Company Email" required>
                         <label for="companyemail">Company Email</label>
                     </div>
 
                     <div class="form-floating">
-                        <input type="url" class="form-control mid-input" id="companywebsite" name="job[companyWebsite]" placeholder="Company Website" required>
+                        <input type="url" class="form-control mid-input" id="companywebsite" name="job[companyWebsite]"
+                            placeholder="Company Website" required>
                         <label for="companywebsite">Company Website</label>
                     </div>
-                   
+
                     <!-- <div class="form-floating">
                         <input type="text" class="form-control mid-input" id="type" name="job[time]" placeholder="Type" required>
                         <label for="type">Job Type</label>
                     </div> -->
-                    
-                    <div class="form-floating">
+
+                    <!-- <div class="form-floating">
                         <input type="text" class="form-control mid-input" id="useremail" name="job[logo]" placeholder="Logo url" required>
                         <label for="useremail">Logo URL</label>
-                    </div>
+                    </div> -->
 
                     <div class="form-floating">
-                        <input type="number" class="form-control" id="jobStipend" name="job[stipend]" placeholder="Stipend" required min="0" step="1000">
+                        <input type="number" class="form-control" id="jobStipend" name="job[stipend]"
+                            placeholder="Stipend" required min="0" step="1000">
                         <label for="jobStipend">Job Stipend</label>
                     </div>
 
