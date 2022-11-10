@@ -4,10 +4,14 @@ const Job = require('../models/job'),
 const axios = require('axios').default;
 const SERPAPI_KEY = process.env.SERPAPI_KEY;
 
+function escapeRegex(text) {
+	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+
 module.exports.jobIndex = async (req, res) => {
 	let noMatch = null;
 	if (req.query.search) {
-		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+		const regex = new RegExp(req.query.search.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'), 'gi');
 		Job.find({ name: regex }, function(err, jobs) {
 			if (err) {
 				req.flash('error', 'Something went wrong in jobs database');
